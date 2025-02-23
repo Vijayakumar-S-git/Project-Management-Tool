@@ -1,0 +1,57 @@
+/* Reset default margins and padding for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: #007bff; /* Blue header for branding */
+    color: white;
+    padding: 1rem 5%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+/* Brand styling */
+.header__brand {
+    margin-bottom: 0.7rem;
+}
+
+.header__brand h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+}
+
+/* Navigation styling */
+.header__nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.7rem 1.2rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 6px;
+}
+
+.nav-links li a:hover,
+.nav-links li a:focus {
+    color: #007bff;
+    background-color: white;
+    outline: none;
+}

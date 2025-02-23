@@ -1,0 +1,262 @@
+/* Epic Login Page Custom Styles */
+.login-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(30, 58, 138, 0.7), rgba(74, 144, 226, 0.4)); /* Radial gradient overlay for depth */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: pulseBackground 6s infinite ease-in-out;
+}
+
+.login-modal-content {
+  background: linear-gradient(135deg, #4a90e2, #6ab0ff, #a2d9ff); /* Vibrant, flowing blue gradient */
+  padding: 3rem;
+  border-radius: 20px;
+  width: 80%; /* Increased from 70% to 80% for a wider container on desktop */
+  max-width: 600px; /* Increased from 480px to 600px to allow more width before capping */
+  box-shadow: 0 15px 40px rgba(74, 144, 226, 0.6), 0 0 20px rgba(162, 217, 255, 0.4); /* Glowing blue shadow with spread */
+  position: relative;
+  overflow: hidden;
+  border: 3px solid rgba(162, 217, 255, 0.8); /* Subtle glowing blue border */
+  backdrop-filter: blur(5px); /* Slight blur for a futuristic look */
+  margin: 0 10%; /* Adjusted margins to 10% on each side for a wider effective width */
+}
+
+/* Keep the rest of the CSS unchanged */
+.login-modal-content::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%), 
+              conic-gradient(from 90deg, #6ab0ff, #a2d9ff, #4a90e2, #6ab0ff);
+  animation: swirlGradient 12s infinite linear, scalePulse 8s infinite ease-in-out;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.login-modal-content::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(162, 217, 255, 0.3), transparent);
+  animation: floatBubble 6s infinite ease-in-out;
+  z-index: 0;
+}
+
+.login-modal-content h2 {
+  color: #000000; /* Bold black text for contrast and impact */
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(30, 58, 138, 0.5), 0 0 10px rgba(162, 217, 255, 0.3);
+  animation: zoomIn 1s ease-out, flicker 2s infinite ease-in-out;
+}
+
+.login-modal-content p {
+  color: #ffffff; /* White text for subtle contrast */
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  opacity: 0.9;
+  text-shadow: 0 1px 3px rgba(30, 58, 138, 0.3);
+  animation: slideUpBounce 1.2s ease-out backwards;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+label {
+  color: #000000; /* Black text for labels, sharp and clear */
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  animation: slideInLeft 0.8s ease-out 0.2s backwards;
+}
+
+input {
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: black;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95); /* Near-opaque white with subtle transparency */
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2), inset 0 2px 6px rgba(162, 217, 255, 0.1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+input::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(162, 217, 255, 0.1), transparent);
+  animation: shimmer 3s infinite linear;
+  z-index: -1;
+}
+
+input:focus {
+  outline: none;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(74, 144, 226, 0.5), inset 0 2px 8px rgba(162, 217, 255, 0.3);
+  background: rgba(255, 255, 255, 1);
+}
+
+button[type="submit"] {
+  background: linear-gradient(45deg, #1e3a8a, #4a90e2, #6ab0ff); /* Deep to light blue gradient */
+  color: #ffffff;
+  border: none;
+  padding: 1rem 1.8rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4), 0 0 15px rgba(162, 217, 255, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  animation: pulseButton 1.5s infinite ease-in-out;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(30, 58, 138, 0.6), 0 0 25px rgba(162, 217, 255, 0.5);
+  background: linear-gradient(45deg, #2d6cb0, #6ab0ff, #a2d9ff);
+}
+
+a {
+  color: #ffffff; /* White text for links */
+  text-decoration: none;
+  position: relative;
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #a2d9ff;
+  transition: width 0.4s ease;
+}
+
+a:hover {
+  color: #a2d9ff;
+  text-shadow: 0 0 10px rgba(162, 217, 255, 0.5);
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Advanced Animations */
+@keyframes pulseBackground {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes swirlGradient {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes scalePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes floatBubble {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  50% { transform: translate(10px, -10px) scale(1.1); opacity: 0.5; }
+  100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes flicker {
+  0%, 100% { text-shadow: 0 2px 8px rgba(30, 58, 138, 0.5), 0 0 10px rgba(162, 217, 255, 0.3); }
+  50% { text-shadow: 0 2px 8px rgba(30, 58, 138, 0.7), 0 0 15px rgba(162, 217, 255, 0.5); }
+}
+
+@keyframes slideUpBounce {
+  0% { transform: translateY(30px); opacity: 0; }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulseButton {
+  0% { transform: scale(1); box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4), 0 0 15px rgba(162, 217, 255, 0.3); }
+  50% { transform: scale(1.02); box-shadow: 0 8px 25px rgba(30, 58, 138, 0.6), 0 0 20px rgba(162, 217, 255, 0.5); }
+  100% { transform: scale(1); box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4), 0 0 15px rgba(162, 217, 255, 0.3); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Responsive Design (Only adjust for mobile, keep desktop at 80% width with 10% margins) */
+@media (max-width: 768px) {
+  .login-modal-content {
+    width: 85%; /* Mobile: Full width but with some padding */
+    padding: 2.2rem;
+    margin: 0; /* Remove margins on mobile */
+  }
+
+  .login-modal-content h2 {
+    font-size: 2.2rem;
+  }
+
+  input, button[type="submit"] {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-modal-content {
+    width: 90%;
+    padding: 1.8rem;
+  }
+
+  .login-modal-content h2 {
+    font-size: 1.8rem;
+  }
+
+  input, button[type="submit"] {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+}
