@@ -39,7 +39,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
   });
-
+  console.log('User created:', user._id);
   // generate token with user id
   const token = generateToken(user._id);
 
@@ -102,7 +102,7 @@ export const loginUser = asyncHandler(async (req, res) => {
 
   if (userExists && isMatch) {
     const { _id, name, email, role, photo, bio, isVerified } = userExists;
-
+    console.log('Login success:', userExists._id);
     // set the token in the cookie
     res.cookie("token", token, {
       path: "/",
@@ -239,7 +239,7 @@ export const verifyEmail = asyncHandler(async (req, res) => {
   const verificationLink = `${process.env.CLIENT_URL}/verify-email/${verificationToken}`;
 
   // send email
-  const subject = "Email Verification - AuthKit";
+  const subject = "Email Verification - Myman";
   const send_to = user.email;
   const reply_to = "noreply@gmail.com";
   const template = "emailVerification";

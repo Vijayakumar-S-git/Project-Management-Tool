@@ -8,27 +8,24 @@ import errorHandler from "./src/helpers/errorhandler.js";
 
 dotenv.config();
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8090; // Match your running port
 
 const app = express();
 
-// middleware
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true,
-  })
-);
-app.use(express.json());
+// Middleware
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(express.json()); // Parse JSON first
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
-// error handler middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`, req.body); // Log after parsing
+  next();
+});
 app.use(errorHandler);
 
-// routes
+// Routes
 const routeFiles = fs.readdirSync("./src/routes");
-console.log("Route files found:", routeFiles); // Debug: See all route files
+console.log("Route files found:", routeFiles);
 
 const loadRoutes = async () => {
   for (const file of routeFiles) {
@@ -47,7 +44,7 @@ const server = async () => {
     console.log("Attempting to connect to database.....");
     await connect();
     console.log("Connected to database.....");
-    await loadRoutes(); // Load routes sequentially
+    await loadRoutes();
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
